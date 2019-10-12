@@ -108,8 +108,16 @@ def transactionHistory():
     data = json.dumps(params)
     api_call = requests.get(url=url, headers=head, params = params)
     transactions = json.loads(api_call.text)
+
+    transactionList = []
     for i in transactions["transaction_details"]:
         check_transaction(i,session['user_id'], myclient)
+
+    db = myclient["moolaDatabase"]
+    transactions = db["transactions"]
+
+    for x in transactions.find({}, {"value": 1, "mula_value": 1}):
+        transactionList.append(x)
 
     return 'History'
 
