@@ -12,9 +12,11 @@ import random
 import string
 import logging
 import json
+import sass
 
 
 app = Flask(__name__)
+sass.compile(dirname=('./static/sass/', './static/css'))
 
 
 # Connect to database and create database session
