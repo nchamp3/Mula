@@ -34,6 +34,14 @@ def showMain():
 
     return render_template('things.html', things=things)
 
+@app.route('/dashboard')
+def showDashboard():
+  return render_template("dashboard.html")
+
+@app.route('/history')
+def showHistory():
+  return render_template("accountHistory.html")
+
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True

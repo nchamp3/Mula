@@ -5,35 +5,34 @@
 <div>
 <main>    
   <!-- Display flash message --> 
-  <section class="section--center mdl-grid mdl-grid--no-spacing">   
-    <div id="flashmessage" class="flash">
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-      <ul>
-        {% for message in messages %}
-        <li> <strong> {{ message }} </strong> </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-      {% endwith %}
-      <!-- Timeout flash message -->
-      <script>$('#flashmessage').fadeOut(3000);</script>
-    </div>
-  </section>
-
   <section>
-    <header>   
       <div class="container" id="hello">
-        <div class="row">
-          <h3>Things</h3>
+        <center>
+        <h1>Welcome to Mula!</h1>
+        <p>Powering your financial sustainibility</p>
+        <div class="login_buttons">
+          <!-- <button class="landing_page_option" style="background: url(https://www.paypalobjects.com/webstatic/en_US/developer/docs/login/connectwithpaypalbutton.png) no-repeat">Login with Paypal</button> -->
+          <span id='cwppButton'></span>
+          <script src='https://www.paypalobjects.com/js/external/connect/api.js'></script>
+          <script>
+          paypal.use( ['login'], function (login) {
+            login.render ({
+              "appid":"REPLACE_WITH_YOUR_APPLICATION_ID",
+              "scopes":"openid",
+              "containerid":"cwppButton",
+              "responseType":"code",
+              "locale":"en-us",
+              "buttonShape":"pill",
+              "buttonSize":"lg",
+              "fullPage":"true",
+              "returnurl":"REPLACE_WITH_YOUR_RETURN_URL"
+            });
+          });
+          </script>
         </div>
-        {% for thing in things %}
-        <div class="row">
-          <h4>{{thing}}</h4>
-        </div>
-        {% endfor %}
+        </center>
+
       </div>     
-    </header>
   </section>
 
 </main>

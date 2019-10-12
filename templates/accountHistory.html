@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div>
+<main>   
+<section>
+      <div class="container" id="hello">
+      <div class="transaction">
+        <h2>Past Transactions</h2>
+      </div>
+      
+      {% for transaction in transactions %}
+
+      {% endfor %}
+      </div>
+</section>
+</main>
+</div>
+
+{% endblock %}
