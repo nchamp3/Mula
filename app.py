@@ -47,8 +47,7 @@ mydb = myclient["moolaDatabase"]
 @app.route('/')
 def showMain():
     things = ["thing1", "thing2", "cat-in-the-hat"]
-
-    return redirect('/login')
+    return render_template("things.html")
 
 
 #get authorization code and exchange for access token.
@@ -83,7 +82,7 @@ def exchange_token():
 
 @app.route('/dashboard')
 def dashboard():
-    return 'dashboard here'
+    return render_template("dashboard.html")
 
 @app.route('/login')
 def login():
@@ -113,7 +112,7 @@ def transactionHistory():
     for i in transactions["transaction_details"]:
         check_transaction(i,session['user_id'], myclient)
 
-    return 'History'
+    return render_template("accountHistory.html")
 
 @app.route('/payout')
 def makePayout():
@@ -162,13 +161,7 @@ def register():
     # was GET or the credentials were invalid
     return render_template('login.html', error=error)
 
-@app.route('/dashboard')
-def showDashboard():
-  return render_template("dashboard.html")
 
-@app.route('/history')
-def showHistory():
-  return render_template("accountHistory.html")
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
