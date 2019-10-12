@@ -44,18 +44,38 @@ mydb = myclient["moolaDatabase"]
 def showMain():
     things = ["thing1", "thing2", "cat-in-the-hat"]
 
-    return render_template('things.html', things=things)
+    return redirect('/login')
 
 
 #get authorization code and exchange for access token.
 @app.route('/redirect')
 def exchange_token():
-    print(request.args.get('code'))
+    auth_code = request.args.get('code')
+    params = {"grant_type": "authorization_code","code": auth_code}
+    url = "https://" + client_id + ":" + secret + "@api.sandbox.paypal.com/v1/oauth2/token"
+
+    #Get Refresh token
+    api_call = requests.post(url=url, data= params)
+    a = json.loads(api_call.text)
+    refresh_token = a["refresh_token"]
+
+    #Get Access Token
+    params = {"grant_type": "refresh_token","refresh_token": refresh_token}
+    api_call = requests.post(url=url, data=params)
+    a = json.loads(api_call.text)
+
+
+    print(a["access_token"])
+    head = {"Authorization": "Bearer " + str(a["access_token"])}
+    print(head)
+    url = "https://api.sandbox.paypal.com/v1/identity/oauth2/userinfo?schema=paypalv1.1"
+    api_call = requests.get(url=url, headers=head)
+    print(api_call.content)
     return 'hello'
 
 @app.route('/login')
 def login():
-    link = "https://www.sandbox.paypal.com/connect?flowEntry=static&client_id=" + client_id + "&scope=openid&redirect_uri=" + redirect_url
+    link = "https://www.sandbox.paypal.com/connect?flowEntry=static&client_id=" + client_id + "&scope=openid profile email&redirect_uri=" + redirect_url
     return redirect(link)
 
 @app.route('/register', methods=['POST', 'GET'])
