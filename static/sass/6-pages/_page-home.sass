@@ -16,17 +16,8 @@ section
   width: 100%
   overflow-x: hidden!important
 
-#header
-  background: url("../img/backgrounds.jpg") no-repeat center center fixed
-  background-size: cover
-  -moz-background-size: cover
-  -webkit-background-size: cover
-  -o-background-size: cover
-    // width: 200%
-  height: 100vh
-  color: white
-  text-align: center
-  opacity: 0.9
+#heading
+  width: 90%
   // zoom: 95%
 
 
@@ -41,14 +32,6 @@ section
     p
       font-size: 26px
 
-
-
-  h1
-    margin-top: 160px
-    margin-bottom: -10px
-    color: white
-    font-size: 110px
-    font-weight: bold
 
   li
     img
@@ -82,28 +65,28 @@ section
 .savings
   font-size: 68px
 
-.set-size 
+.set-size
   font-size: 15em
 
-.charts-container:after 
+.charts-container:after
   clear: both
   content: ""
   display: table
   margin-bottom: 45px
 
-.pie-wrapper 
+.pie-wrapper
   height: 1em
   width: 1em
   margin: 15px
   position: relative
-  .pie 
+  .pie
     height: 100%
     width: 100%
     clip: rect(0, 1em, 1em, 0.5em)
     left: 0
     position: absolute
     top: 0
-    .half-circle 
+    .half-circle
       height: 100%
       width: 100%
       border: 0.1em solid #3498db
@@ -112,7 +95,7 @@ section
       left: 0
       position: absolute
       top: 0
-  .label 
+  .label
     background: #34495e
     border-radius: 50%
     bottom: 0.4em
@@ -126,37 +109,36 @@ section
     right: 0.4em
     text-align: center
     top: 0.4em
-    .smaller 
+    .smaller
       color: #bdc3c7
       font-size: .45em
       padding-bottom: 20px
       vertical-align: super
 
-  .shadow 
+  .shadow
     height: 100%
     width: 100%
     border: 0.1em solid #bdc3c7
     border-radius: 50%
 
-.pie-wrapper.style-2 
-  .label 
+.pie-wrapper.style-2
+  .label
     background: none
     color: #1665a7
-    .smaller 
+    .smaller
       color: #1665a7
 
 
-.pie-wrapper.progress-45 
-  .pie 
-    .right-side 
+.pie-wrapper.progress-45
+  .pie
+    .right-side
       display: none
-    .half-circle 
+    .half-circle
       border-color: #1665a7
-    .left-side 
-      transition: 5s ease-in-out;
-
+    .left-side
+      transition: 5s ease-in-out
 .anim
-  transform: rotate(162deg)
+  transform: rotate(1deg)
 
 .transaction
   border-bottom: 2px solid
@@ -182,3 +164,7 @@ section
 .round
   float: right
   font-size: 24px
+
+.logout
+  float: right
+  margin-top: 3.2em

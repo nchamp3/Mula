@@ -3,29 +3,33 @@
 {% include "header.html" %}
 
 <div>
-<main>   
+<main>
 <section>
       <div class="container" id="hello">
       <center>
         <div class="savings">
           <h2>Savings</h2>
-          <p>$100.00</p>
+          <p>${{ total }}</p>
         </div>
         <div class="set-size charts-container">
           <div class="pie-wrapper progress-45 style-2">
-            <span class="label">45<span class="smaller">%</span></span>
+            <span class="label">{{ "%.2f"|format(100 * progress) }}<span class="smaller">%</span></span>
             <div class="pie">
-              <div class="left-side half-circle" onload="transition()"></div>
+              <div class="left-side half-circle anim" onload="transition()"></div>
               <div class="right-side half-circle" ></div>
-              <script type="text/javascript">  
-                document.getElementsByClassName('left-side')[0].setAttribute('class', 'left-side half-circle anim');
+              <script type="text/javascript">
+                var degrees = Math.round(({{ progress }} * 360)*100)/100;
+                console.log("DEGREES", degrees);
+                document.getElementsByClassName('anim')[0].style.cssText = "transform: rotate(" + degrees + "deg);";
+                document.getElementsByClassName('left-side')[0].setAttribute("class", "left-side half-circle anim");
               </script>
             </div>
             <div class="shadow"></div>
           </div>
         </div>
         <button class="landing_page_option">Withdraw</button>
-        <button class="landing_page_option">Account History</button>
+
+        <a href="{{ url_for('transactionHistory') }}"><button class="landing_page_option">Account History</button></a>
         <!-- <span class="savings">$10.00</span> -->
       </center>
       </div>

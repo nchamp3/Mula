@@ -1,11 +1,14 @@
 <title>Mula</title>
 
-<div>  
+<div>
   <header>
-    <div class="container">
-      <div class="row">  
+    <div class="container" id="heading">
+      <div class="row">
         <!-- Title -->
-        <h1>M</h1>
+        <div style="float:left; margin-top:3.2em;"><img src="static/img/logo.png" width=75 height=75 /></div>
+        <div class="logout">
+          <a href="{{ url_for('logout') }}"><h3>Logout</h3></a>
+        </div>
       </div>
     </div>
   </header>

@@ -82,7 +82,12 @@ def exchange_token():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template("dashboard.html")
+    db = myclient["moolaDatabase"]
+    users = db["users"]
+    x = users.find_one({"id":session['user_id']})
+    amount = x["value"]
+    percent = amount/75
+    return render_template("dashboard.html", total=amount, progress=percent)
 
 @app.route('/login')
 def login():
@@ -112,7 +117,15 @@ def transactionHistory():
     for i in transactions["transaction_details"]:
         check_transaction(i,session['user_id'], myclient)
 
-    return render_template("accountHistory.html")
+    db = myclient["moolaDatabase"]
+    transactions = db["transactions"]
+    transactionList = []
+    for x in transactions.find({}, {"value": 1, "mula_value": 1}):
+        transactionList.append(x)
+
+    transactionList.reverse()
+
+    return render_template("accountHistory.html", transactions=transactionList)
 
 @app.route('/payout')
 def makePayout():
