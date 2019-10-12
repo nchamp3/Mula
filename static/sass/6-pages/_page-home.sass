@@ -9,7 +9,7 @@ body
   height: 100%
   justify-content: center
   align-items: center
-  background-color: #FAF3DD
+  background-color: #e1e8f4
   overflow-x: hidden!important
   margin-top: 0!important
 section
@@ -74,6 +74,7 @@ section
   color: white!important
   border: none!important
   margin-bottom: 10px
+  width: 80vw!important
 
 .login_buttons
   display: inline-grid
@@ -88,6 +89,7 @@ section
   clear: both
   content: ""
   display: table
+  margin-bottom: 45px
 
 .pie-wrapper 
   height: 1em
@@ -114,7 +116,7 @@ section
     background: #34495e
     border-radius: 50%
     bottom: 0.4em
-    color: #ecf0f1
+    color: #1665a7
     cursor: default
     display: block
     font-size: 0.25em
@@ -139,9 +141,9 @@ section
 .pie-wrapper.style-2 
   .label 
     background: none
-    color: #7f8c8d
+    color: #1665a7
     .smaller 
-      color: #bdc3c7
+      color: #1665a7
 
 
 .pie-wrapper.progress-45 
@@ -149,12 +151,34 @@ section
     .right-side 
       display: none
     .half-circle 
-      border-color: #1abc9c
+      border-color: #1665a7
     .left-side 
       transition: 5s ease-in-out;
-      transform: rotate(162deg)
+
+.anim
+  transform: rotate(162deg)
 
 .transaction
-  border-bottom: 1px solid
+  border-bottom: 2px solid
   width: 90vw!important
   text-align: center
+
+.date
+  border-bottom: 1.5px solid
+  width: 90vw!important
+
+.transactionItem
+  border-bottom: 1px solid
+  width: 90vw!important
+  display: inline-block
+
+.purchase
+  display: flex
+  float: left
+  margin-top: 7.5px
+  .location
+    margin-right: 5px
+
+.round
+  float: right
+  font-size: 24px
