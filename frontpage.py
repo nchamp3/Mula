@@ -6,6 +6,10 @@ def create_user(username, password, firstName, lastName, email, confirmation, db
     if x.count() > 0:
         print("Username exists")
     else:
-        #TODO : Check if confirm equals passowrd
-        user = {"username": username,"password": password, "firstName":firstName, "lastName": lastName, "email": email}
-        users.insert_one(user)
+        if(password != confirmation):
+            print("Passwords do not match. ")
+        else:
+            user = {"username": username,"password": password, "firstName":firstName, "lastName": lastName, "email": email}
+            users.insert_one(user)
+
+
