@@ -86,10 +86,16 @@ def dashboard():
 @app.route('/login')
 def login():
     if 'access_token' in session:
-        return redirect('/dashboard')
+        return redirect('dashboard')
     else:
         link = "https://www.sandbox.paypal.com/connect?flowEntry=static&client_id=" + client_id + "&scope=openid profile email&redirect_uri=" + redirect_url
         return redirect(link)
+
+@app.route('/logout')
+def logout():
+    session.pop('access_token', None)
+    session.pop('user_id', None)
+    return redirect('login')
 
 @app.route('/history')
 def transactionHistory():
